@@ -25,6 +25,7 @@ public class ArrayDeque<T> implements deque<T>, Iterable<T> {
 
     /**
      * Return a new ArrayDeque containing the T item in ARGS.
+     *
      * @param args T items
      * @return a new ArrayDeque constructed by args
      */
@@ -162,6 +163,10 @@ public class ArrayDeque<T> implements deque<T>, Iterable<T> {
             return null;
         }
         T e = elem[getFirstIndex()];
+        /* debug4 */
+        if (size == 1){
+            nextLast = getFirstIndex();
+        }
         /* debug 2 */
         nextFirst = getFirstIndex();
         size -= 1;
@@ -177,6 +182,9 @@ public class ArrayDeque<T> implements deque<T>, Iterable<T> {
             return null;
         }
         T e = elem[getLastIndex()];
+        if (size == 1){
+            nextFirst = getLastIndex();
+        }
         nextLast = getLastIndex();
         size -= 1;
         if (capacity >= 16 && size <= (capacity >> 2)) {
@@ -226,27 +234,12 @@ public class ArrayDeque<T> implements deque<T>, Iterable<T> {
 
     public static void main(String[] args) {
         ArrayDeque<Integer> ad = new ArrayDeque<>();
-        ad.addFirst(1);
+        ad.addFirst(0);
+        System.out.println(ad.get(0));
         ad.addFirst(2);
-        ad.addLast(3);
-        ad.addLast(4);
-        ad.removeFirst();
+        System.out.println(ad.removeFirst());
+        System.out.println(ad.removeLast());
         ad.addFirst(5);
-        ad.addFirst(7);
-        ad.addFirst(8);
-        ad.addFirst(9);
-        ad.addFirst(10);
-        ad.removeLast();
-        ad.removeLast();
-        ad.addLast(6);
-        ad.removeFirst();
-        ad.removeFirst();
-        ad.removeLast();
-        System.out.println(ad.get(4));
-        System.out.println(ad.get(2));
-        System.out.println(ad);
-        ArrayDeque<String> ad2 = ArrayDeque.of("leo","bruno","cassie","kevin","lucy",
-                "penelope","robert","isabelle","jessica","pedro");
-        System.out.println(ad2);
+        System.out.println(ad.removeLast());
     }
 }
