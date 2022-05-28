@@ -104,11 +104,16 @@ public class ArrayDeque<T> implements deque<T>, Iterable<T> {
     @Override
     public void addFirst(T item) {
         elem[nextFirst] = item;
+        /* debug 4 */
         nextFirst -= 1;
+        if (nextFirst < 0) {
+            nextFirst = capacity - 1;
+        }
         if (size == 0) {
             nextLast += 1;
-        } else if (nextFirst < 0) {
-            nextFirst = capacity - 1;
+            if (nextLast == capacity) {
+                nextLast = 0;
+            }
         }
         size += 1;
         /* debug 1 */
@@ -121,10 +126,14 @@ public class ArrayDeque<T> implements deque<T>, Iterable<T> {
     public void addLast(T item) {
         elem[nextLast] = item;
         nextLast += 1;
+        if (nextLast == capacity) {
+            nextLast = 0;
+        }
         if (size == 0) {
             nextFirst -= 1;
-        } else if (nextLast == capacity) {
-            nextLast = 0;
+            if (nextFirst < 0) {
+                nextFirst = capacity - 1;
+            }
         }
         size += 1;
         if (size == capacity) {
@@ -164,7 +173,7 @@ public class ArrayDeque<T> implements deque<T>, Iterable<T> {
         }
         T e = elem[getFirstIndex()];
         /* debug4 */
-        if (size == 1){
+        if (size == 1) {
             nextLast = getFirstIndex();
         }
         /* debug 2 */
@@ -182,7 +191,7 @@ public class ArrayDeque<T> implements deque<T>, Iterable<T> {
             return null;
         }
         T e = elem[getLastIndex()];
-        if (size == 1){
+        if (size == 1) {
             nextFirst = getLastIndex();
         }
         nextLast = getLastIndex();
@@ -234,12 +243,26 @@ public class ArrayDeque<T> implements deque<T>, Iterable<T> {
 
     public static void main(String[] args) {
         ArrayDeque<Integer> ad = new ArrayDeque<>();
-        ad.addFirst(0);
+        ad.addLast(0);
+        ad.addFirst(1);
         System.out.println(ad.get(0));
-        ad.addFirst(2);
-        System.out.println(ad.removeFirst());
+        ad.removeLast();
+        ad.addLast(3);
         System.out.println(ad.removeLast());
         ad.addFirst(5);
         System.out.println(ad.removeLast());
+        ad.addLast(8);
+        ad.addFirst(9);
+        ad.removeLast();
+        ad.removeFirst();
+        ad.addFirst(12);
+        ad.addFirst(13);
+        ad.removeLast();
+        ad.addFirst(15);
+        ad.removeLast();
+        ad.removeFirst();
+        ad.removeLast();
+        ad.addLast(19);
+        ad.addFirst(20);
     }
 }
