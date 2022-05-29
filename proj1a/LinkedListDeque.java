@@ -1,10 +1,12 @@
+
 import java.util.Iterator;
 
 /**
  * Deque based linked list
+ *
  * @param <T> type of items
  */
-public class LinkedListDeque<T> implements deque<T>, Iterable<T> {
+public class LinkedListDeque<T> implements Deque<T>, Iterable<T> {
     private class Linkedlist {
         T item;
         Linkedlist prev;
@@ -198,16 +200,5 @@ public class LinkedListDeque<T> implements deque<T>, Iterable<T> {
             ptr = ptr.next;
             return ptr.item;
         }
-    }
-
-    public static void main(String[] args) {
-        LinkedListDeque<Integer> lls = new LinkedListDeque<>();
-        lls.addFirst(1);
-        lls.addLast(2);
-        lls.addLast(3);
-        lls.addFirst(4);
-        System.out.println(lls.get(2));
-        System.out.println(lls.getRecursive(3));
-        System.out.println(lls);
     }
 }

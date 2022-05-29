@@ -6,7 +6,7 @@ import java.util.Iterator;
  *
  * @param <T> type of item
  */
-public class ArrayDeque<T> implements deque<T>, Iterable<T> {
+public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
     private T[] elem;
     private int capacity = 8;
     private int size, nextFirst, nextLast;
@@ -16,7 +16,7 @@ public class ArrayDeque<T> implements deque<T>, Iterable<T> {
      * is 8, size is zero. The index of first item is 4,
      * which is default value of nextFirst and nextLast.
      */
-    ArrayDeque() {
+    public ArrayDeque() {
         elem = (T[]) new Object[capacity];
         size = 0;
         nextFirst = capacity / 2;
