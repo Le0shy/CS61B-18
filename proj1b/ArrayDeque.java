@@ -179,7 +179,8 @@ public class ArrayDeque<T> implements Deque<T>, Iterable<T> {
         /* debug 2 */
         nextFirst = getFirstIndex();
         size -= 1;
-        if (capacity >= 16 && size < (capacity >> 2)) {
+        /* debug 1 when project 1b */
+        if (capacity >= 16 && size <= (capacity >> 2)) {
             shrink();
         }
         return e;

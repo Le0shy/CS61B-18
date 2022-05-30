@@ -39,8 +39,8 @@ public class Palindrome {
         if (deque.size() == 0 || deque.size() == 1) {
             return true;
         } else {
-            if (comparator.equalChars((char)deque.removeFirst(),(char)deque.removeLast())) {
-                return isPalindromeHelper(deque,comparator);
+            if (comparator.equalChars((char) deque.removeFirst(), (char) deque.removeLast())) {
+                return isPalindromeHelper(deque, comparator);
             } else {
                 return false;
             }
