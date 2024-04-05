@@ -1,8 +1,7 @@
 package lab11.graphs;
-import edu.princeton.cs.algs4.SET;
 
 import java.util.*;
-import java.util.concurrent.LinkedBlockingDeque;
+
 
 /**
  *  @author Josh Hug
@@ -36,11 +35,11 @@ public class MazeBreadthFirstPaths extends MazeExplorer {
 
     /** Conducts a breadth first search of the maze starting at the source. */
     private void bfs() {
-        // TODO: Your code here. Don't forget to update distTo, edgeTo, and marked, as well as call announce()
+        /*  Your code here. Don't forget to update distTo, edgeTo, and marked, as well as call announce() */
         while (!queue.isEmpty()) {
 
             v = queue.remove();
-            if(marked[v]) {
+            if (marked[v]) {
                 continue;
             }
             marked[v] = true;

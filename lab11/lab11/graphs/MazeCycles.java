@@ -11,8 +11,9 @@ public class MazeCycles extends MazeExplorer {
     */
 
     //private int vertex_count = 0;
-    final private int[] parent;
+    private final int[] parent;
     private boolean detected;
+
     public MazeCycles(Maze m) {
         super(m);
         //vertex_count = m.V();
@@ -25,13 +26,13 @@ public class MazeCycles extends MazeExplorer {
 
     @Override
     public void solve() {
-        // TODO: Your code here!
+        // Your code here!
         cd(0);
     }
 
     // Helper methods go here
     private void cd(int v) {
-        if(detected) {
+        if (detected) {
             return;
         }
 
@@ -43,30 +44,26 @@ public class MazeCycles extends MazeExplorer {
                 parent[w] = v;
                 distTo[w] = distTo[v] + 1;
                 cd(w);
-            }
-            else {
-                if(parent[v] != w) {
-                    /* detect a cycle */
-                    detected = true;
-                    parent[w] = v;
-                    setEdges(w, v);
-                    return;
-                }
+            } else if (parent[v] != w) {
+                /* detect a cycle */
+                detected = true;
+                parent[w] = v;
+                setEdges(w, v);
+                return;
             }
         }
     }
 
-    private void setEdges(int start, int end){
-        for(; ; end = parent[end]){
+    private void setEdges(int start, int end) {
+        for (; ; end = parent[end]) {
             edgeTo[end] = parent[end];
             /* display */
             announce();
-            if(start == end) {
+            if (start == end) {
                 break;
             }
         }
     }
 }
-
 
 
