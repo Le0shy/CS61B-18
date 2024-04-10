@@ -1,7 +1,7 @@
 package hw4.puzzle;
 import java.util.ArrayList;
 
-public class Board implements WorldState{
+public class Board implements WorldState {
     private int[][] board;
     private int size;
     private int zeroX;
@@ -22,7 +22,7 @@ public class Board implements WorldState{
     }
 
     public int tileAt(int i, int j) {
-        if(i < 0 || j < 0 || i >= size || j >= size ){
+        if (i < 0 || j < 0 || i >= size || j >= size) {
             throw new IndexOutOfBoundsException();
         }
         return board[i][j];
@@ -83,9 +83,9 @@ public class Board implements WorldState{
     @Override
     public boolean equals(Object y) {
         Board y1 = (Board) y;
-        for(int i = 0; i < size(); i += 1) {
-            for(int j = 0; j < size(); j += 1) {
-                if(this.board[i][j] != y1.board[i][j]) {
+        for (int i = 0; i < size(); i += 1) {
+            for (int j = 0; j < size(); j += 1) {
+                if (this.board[i][j] != y1.board[i][j]) {
                     return false;
                 }
             }
@@ -105,7 +105,7 @@ public class Board implements WorldState{
         return (newX >= 0 && newX < size && newY >= 0 && newY < size);
     }
 
-    private void transfrom(Board b, int newX, int newY){
+    private void transfrom(Board b, int newX, int newY) {
         int temp = b.board[newX][newY];
         b.board[newX][newY] = b.board[zeroX][zeroY];
         b.board[zeroX][zeroY] = temp;
