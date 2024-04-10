@@ -14,17 +14,17 @@ public class Solver {
 
         int heuristic;
 
-        SearchNode(WorldState ws_) {
-            ws = ws_;
+        SearchNode(WorldState worldState) {
+            ws = worldState;
             movesTo = 0;
             previous = null;
             heuristic = -1;
         }
 
-        SearchNode(WorldState ws_, int movesTo_, SearchNode previous_) {
-            ws = ws_;
-            movesTo = movesTo_;
-            previous = previous_;
+        SearchNode(WorldState worldState, int m, SearchNode pre) {
+            ws = worldState;
+            movesTo = m;
+            previous = pre;
             heuristic = -1;
         }
     }
@@ -53,6 +53,7 @@ public class Solver {
             for (WorldState neighbor : iter.ws.neighbors()) {
                 if (iter.previous == null || !neighbor.equals(iter.previous.ws)) {
                     pq.insert(new SearchNode(neighbor, iter.movesTo + 1, iter));
+                    /*System.out.println("enque\n");*/
                 }
             }
             iter = pq.delMin();
