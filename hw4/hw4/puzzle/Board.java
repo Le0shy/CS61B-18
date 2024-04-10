@@ -62,8 +62,8 @@ public class Board implements WorldState {
 
     public int hamming() {
         int distance = 0;
-        for (int i = 0; i < size; i += 1){
-            for (int j = 0; j < size; j += 1){
+        for (int i = 0; i < size; i += 1) {
+            for (int j = 0; j < size; j += 1) {
                 if (board[i][j] != 0 && board[i][j] != i * size + j + 1) {
                     distance += 1;
                 }
@@ -92,7 +92,7 @@ public class Board implements WorldState {
     @Override
     public boolean equals(Object y) {
         Board y1 = (Board) y;
-        if (y1.size() != size()){
+        if (y1.size() != size()) {
             return false;
         }
         for (int i = 0; i < size(); i += 1) {
@@ -106,7 +106,7 @@ public class Board implements WorldState {
     }
 
     @Override
-    public int hashCode(){
+    public int hashCode() {
         return -1;
     }
 
