@@ -7,7 +7,7 @@ public class Solver {
 
     private int movesToGoal;
     private LinkedList<WorldState> sequence;
-    public class SearchNode {
+    private class SearchNode {
         WorldState ws;
         int movesTo;
         SearchNode previous;
@@ -29,7 +29,7 @@ public class Solver {
         }
     }
 
-    public class SearchNodePriority implements Comparator<SearchNode> {
+    private class SearchNodePriority implements Comparator<SearchNode> {
         @Override
         public int compare(SearchNode o1, SearchNode o2) {
             if (o1.heuristic == -1) {
@@ -41,11 +41,11 @@ public class Solver {
             return o1.movesTo + o1.heuristic - o2.movesTo - o2.heuristic;
         }
     }
-    MinPQ<SearchNode> pq;
+    private MinPQ<SearchNode> pq;
 
-    /* Constructor which solves the puzzle, computing everything necessary for moves() and solution()
-    to not have to solve the problem again. Solves the puzzle using the A* algorithm.
-    Assumes a solution exists. */
+    /* Constructor which solves the puzzle, computing everything necessary for moves()
+    and solution() to not have to solve the problem again. Solves the puzzle using the
+    A* algorithm. Assumes a solution exists. */
     public Solver(WorldState initial) {
         initSolver(initial);
         SearchNode iter = pq.delMin();
